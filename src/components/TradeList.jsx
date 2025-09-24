@@ -1,46 +1,62 @@
 export default function TradeList({ items = [], onDelete }) {
   if (!items.length) {
     return (
-      <div className="panel" style={{ color: '#9fb0c3' }}>
+      <div className="panel" style={{ color: "#6c757d" }}>
         まだ保存されたトレードはありません。
       </div>
-    )
+    );
   }
 
   return (
-    <div className="list">
-      {items.map(t => (
-        <div className="panel" key={t.id}>
-          <div className="row row-4-2-2">
-            <div>
-              <div className="section-title" style={{ margin: 0 }}>エントリー</div>
-              <div style={{ fontSize: 16 }}>
-                {t.entryDate} {t.entryTime} / <strong>{t.pair}</strong>
-              </div>
-              <div style={{ color: '#9fb0c3', marginTop: 4 }}>
-                価格: {t.entryPrice}
-              </div>
-            </div>
-
-            <div>
-              <div className="section-title" style={{ margin: 0 }}>決済/損切</div>
-              <div>決済価格: {t.takeProfit ?? '-'}</div>
-              <div>損切価格: {t.stopLoss ?? '-'}</div>
-            </div>
-
-            <div>
-              <div className="section-title" style={{ margin: 0 }}>予想</div>
-              <div>予想利益(円): {t.expectedProfit ?? '-'}</div>
-              <div>予想損失(円): {t.expectedLoss ?? '-'}</div>
-            </div>
-          </div>
-
-          <hr className="sep" />
-          <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
-            <button className="btn btn-danger" onClick={() => onDelete(t.id)}>削除</button>
-          </div>
-        </div>
-      ))}
+    <div className="panel">
+      <table style={{ width: "100%", borderCollapse: "collapse" }}>
+        <thead>
+          <tr style={{ background: "#f8f9fa", textAlign: "left" }}>
+            <th style={th}>日時</th>
+            <th style={th}>通貨ペア</th>
+            <th style={th}>エントリー価格</th>
+            <th style={th}>決済価格</th>
+            <th style={th}>損切価格</th>
+            <th style={th}>予想利益(円)</th>
+            <th style={th}>予想損失(円)</th>
+            <th style={th}>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          {items.map((t) => (
+            <tr key={t.id} style={{ borderBottom: "1px solid #dee2e6" }}>
+              <td style={td}>{t.entryDate} {t.entryTime}</td>
+              <td style={td}>{t.pair}</td>
+              <td style={td}>{t.entryPrice}</td>
+              <td style={td}>{t.takeProfit ?? "-"}</td>
+              <td style={td}>{t.stopLoss ?? "-"}</td>
+              <td style={td}>{t.expectedProfit ?? "-"}</td>
+              <td style={td}>{t.expectedLoss ?? "-"}</td>
+              <td style={td}>
+                <button
+                  className="btn btn-danger"
+                  style={{ padding: "4px 8px", fontSize: 12 }}
+                  onClick={() => onDelete(t.id)}
+                >
+                  削除
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
-  )
+  );
 }
+
+const th = {
+  padding: "8px 6px",
+  fontSize: "13px",
+  borderBottom: "2px solid #dee2e6",
+};
+
+const td = {
+  padding: "8px 6px",
+  fontSize: "14px",
+  verticalAlign: "middle",
+};

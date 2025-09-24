@@ -160,3 +160,14 @@ hr.sep {
   margin: 16px 0;
   opacity: .6;
 }
+
+/* 白いパネル内は文字を黒系で統一 */
+.panel, .panel * {
+  color: var(--text);
+}
+
+/* ラベルはやや薄めの黒 */
+label { color: var(--muted); }
+
+/* 入力欄の文字は完全に黒 */
+input, select, textarea { color: #000; }
