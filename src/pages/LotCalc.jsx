@@ -74,7 +74,7 @@ export default function LotCalc() {
             <label>勝率（％）</label>
             <input type="number" step="0.1" value={winRate} onChange={(e)=>setWinRate(Number(e.target.value))}/>
           </div>
-          <div><label style={{visibility:"hidden"}}>spacer</label><div className="badge">設定はホームと共有</div></div>
+          
         </div>
 
         <hr className="sep" />

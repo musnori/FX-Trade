@@ -151,11 +151,6 @@ export default function TradeForm({ onSave }) {
         </div>
       </div>
 
-      <div className="kpi" style={{ marginTop: 12 }}>
-        <span className="badge">ロット計算の pips/RR を使用</span>
-        <span className="badge">通貨別のpipsサイズで自動換算</span>
-        <span className="badge">ロング前提（TP↑ SL↓）</span>
-      </div>
 
       <hr className="sep" />
       <div style={{ display: "flex", gap: 10 }}>
